@@ -35,6 +35,14 @@
 		B3C76760251C3D200052ED99 /* ItemsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C7675F251C3D200052ED99 /* ItemsListViewController.swift */; };
 		B3C76762251C3D500052ED99 /* ItemsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C76761251C3D500052ED99 /* ItemsListViewModel.swift */; };
 		B3C76765251C400B0052ED99 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C76764251C400B0052ED99 /* ItemTableViewCell.swift */; };
+		B3C76768251CAB420052ED99 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C76767251CAB420052ED99 /* Item.swift */; };
+		B3C7676A251DE2930052ED99 /* ItemTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C76769251DE2930052ED99 /* ItemTableViewCellViewModel.swift */; };
+		B3C7676C251DEB920052ED99 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C7676B251DEB920052ED99 /* ImageLoader.swift */; };
+		B3C7676E251DEC5C0052ED99 /* UIImageViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C7676D251DEC5C0052ED99 /* UIImageViewLoader.swift */; };
+		B3C76770251DEE990052ED99 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C7676F251DEE990052ED99 /* ItemCategory.swift */; };
+		B3C76772251DEEFF0052ED99 /* ItemImagesURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C76771251DEEFF0052ED99 /* ItemImagesURL.swift */; };
+		B3C76774251DFA860052ED99 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C76773251DFA860052ED99 /* UIColor+Extension.swift */; };
+		B3C76777251E07380052ED99 /* GradientBackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C76776251E07380052ED99 /* GradientBackgroundLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +97,14 @@
 		B3C7675F251C3D200052ED99 /* ItemsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListViewController.swift; sourceTree = "<group>"; };
 		B3C76761251C3D500052ED99 /* ItemsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListViewModel.swift; sourceTree = "<group>"; };
 		B3C76764251C400B0052ED99 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		B3C76767251CAB420052ED99 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B3C76769251DE2930052ED99 /* ItemTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		B3C7676B251DEB920052ED99 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		B3C7676D251DEC5C0052ED99 /* UIImageViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewLoader.swift; sourceTree = "<group>"; };
+		B3C7676F251DEE990052ED99 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
+		B3C76771251DEEFF0052ED99 /* ItemImagesURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImagesURL.swift; sourceTree = "<group>"; };
+		B3C76773251DFA860052ED99 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B3C76776251E07380052ED99 /* GradientBackgroundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +135,7 @@
 		B36077DE251C2D1300CF1C92 = {
 			isa = PBXGroup;
 			children = (
+				B3C76766251CAB320052ED99 /* Data */,
 				B3C76756251C355F0052ED99 /* Network */,
 				B3C7672E251C2F6B0052ED99 /* Tools */,
 				B36077E9251C2D1300CF1C92 /* LBC */,
@@ -185,6 +202,7 @@
 		B3C76731251C2FF40052ED99 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B3C76775251E07160052ED99 /* GradientBackgroundLabel */,
 				B3C7674F251C33680052ED99 /* Loader */,
 				B3C76734251C302B0052ED99 /* SnackBar */,
 				B3C76739251C30820052ED99 /* Style.swift */,
@@ -222,6 +240,7 @@
 			children = (
 				B3C7674D251C33000052ED99 /* NSObject+Extension.swift */,
 				B3C76752251C34000052ED99 /* UIViewController+Extension.swift */,
+				B3C76773251DFA860052ED99 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,6 +258,8 @@
 			children = (
 				B3C76757251C36290052ED99 /* Provider.swift */,
 				B3C76759251C37300052ED99 /* NetworkProvider.swift */,
+				B3C7676B251DEB920052ED99 /* ImageLoader.swift */,
+				B3C7676D251DEC5C0052ED99 /* UIImageViewLoader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -264,8 +285,27 @@
 			isa = PBXGroup;
 			children = (
 				B3C76764251C400B0052ED99 /* ItemTableViewCell.swift */,
+				B3C76769251DE2930052ED99 /* ItemTableViewCellViewModel.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B3C76766251CAB320052ED99 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B3C76767251CAB420052ED99 /* Item.swift */,
+				B3C7676F251DEE990052ED99 /* ItemCategory.swift */,
+				B3C76771251DEEFF0052ED99 /* ItemImagesURL.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		B3C76775251E07160052ED99 /* GradientBackgroundLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B3C76776251E07380052ED99 /* GradientBackgroundLabel.swift */,
+			);
+			path = GradientBackgroundLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +443,12 @@
 				B3C76733251C300F0052ED99 /* SnackBarController.swift in Sources */,
 				B3C76743251C31F50052ED99 /* Router.swift in Sources */,
 				B3C76765251C400B0052ED99 /* ItemTableViewCell.swift in Sources */,
+				B3C7676E251DEC5C0052ED99 /* UIImageViewLoader.swift in Sources */,
+				B3C76777251E07380052ED99 /* GradientBackgroundLabel.swift in Sources */,
+				B3C7676C251DEB920052ED99 /* ImageLoader.swift in Sources */,
+				B3C76768251CAB420052ED99 /* Item.swift in Sources */,
+				B3C76774251DFA860052ED99 /* UIColor+Extension.swift in Sources */,
+				B3C76770251DEE990052ED99 /* ItemCategory.swift in Sources */,
 				B3C76736251C30390052ED99 /* SnackBar.swift in Sources */,
 				B3C76762251C3D500052ED99 /* ItemsListViewModel.swift in Sources */,
 				B3C76745251C32150052ED99 /* RouterImp.swift in Sources */,
@@ -416,11 +462,13 @@
 				B3C76749251C32510052ED99 /* BaseCoordinator.swift in Sources */,
 				B3C7673D251C31960052ED99 /* Coordinator.swift in Sources */,
 				B3C76760251C3D200052ED99 /* ItemsListViewController.swift in Sources */,
+				B3C76772251DEEFF0052ED99 /* ItemImagesURL.swift in Sources */,
 				B3C76755251C348C0052ED99 /* ApplicationCoordinator.swift in Sources */,
 				B3C76758251C36290052ED99 /* Provider.swift in Sources */,
 				B3C7674E251C33000052ED99 /* NSObject+Extension.swift in Sources */,
 				B3C76741251C31D70052ED99 /* CoordinatorFactory.swift in Sources */,
 				B3C7673F251C31B40052ED99 /* PresentationType.swift in Sources */,
+				B3C7676A251DE2930052ED99 /* ItemTableViewCellViewModel.swift in Sources */,
 				B3C76747251C32360052ED99 /* Presentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,5 +7,29 @@
 //
 
 class ItemsListViewModel {
-    var items = [1,2,3,4]
+    let provider: Provider
+    var items = [Item]()
+    var delegate: ItemListViewModelDelegate?
+    
+    init(provider: Provider) {
+        self.provider = provider
+    }
+
+    func fetchItems() {
+        provider.fetchData { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(items):
+                self.items = items
+                self.delegate?.itemsLoaded()
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+protocol ItemListViewModelDelegate {
+    func itemsLoaded()
+    func errorOccured()
 }

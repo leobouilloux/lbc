@@ -15,12 +15,18 @@ class ItemsListViewController: BaseViewController {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: ItemsListViewController.bundle)
+        self.viewModel.delegate = self
     }
-        
+
+    /******************************************/
+    /* View */
+    private lazy var tableView: UITableView = setupTableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
+//        setupView()
+        viewModel.fetchItems()
     }
 }
 
@@ -31,7 +37,7 @@ extension ItemsListViewController {
         setupTableView()
     }
     
-    func setupTableView() {
+    func setupTableView() -> UITableView {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
@@ -44,6 +50,7 @@ extension ItemsListViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+        return tableView
     }
 }
 
@@ -65,6 +72,25 @@ extension ItemsListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return ItemTableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: UUID().uuidString)
+        let cell = ItemTableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: UUID().uuidString)
+        let cellViewModel = ItemTableViewCellViewModel(item: viewModel.items[indexPath.row])
+        cell.setup(with: cellViewModel)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 104
+    }
+}
+
+extension ItemsListViewController: ItemListViewModelDelegate {
+    func itemsLoaded() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func errorOccured() {
+        
     }
 }

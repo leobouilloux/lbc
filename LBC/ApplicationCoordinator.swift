@@ -46,7 +46,8 @@ final class ApplicationCoordinator: Coordinator {
 //    }
     
     private func runMainFlow(with option: DeepLinkOption? = nil, presentationType: PresentationType) {
-        window.rootViewController = ItemsListViewController(with: ItemsListViewModel())
+        let provider = NetworkProvider()
+        window.rootViewController = ItemsListViewController(with: ItemsListViewModel(provider: provider))
     }
 //        let coordinator = TabbarFactory().makeTabbarCoordinator(provider: provider)
 //        addDependency(coordinator)

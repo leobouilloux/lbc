@@ -20,13 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let provider = NetworkProvider()
+        
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ItemsListViewController(with: ItemsListViewModel())
+        window?.rootViewController = ItemsListViewController(with: ItemsListViewModel(provider: provider))
         window?.makeKeyAndVisible()
         
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let provider = NetworkProvider()
+//        let provider = NetworkProvider()
         
         applicationCoordinator = ApplicationCoordinator(window: window,
                                                         coordinatorFactory: CoordinatorFactory(),

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemTableViewCell: UITableViewCell {
+final class ItemTableViewCell: UITableViewCell {
     let itemImageView = UIImageView()
     let titleLabel = UILabel()
     let categoryTag = GradientTag()
@@ -22,6 +22,8 @@ class ItemTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
     }
     
     func setup(with viewModel: ItemTableViewCellViewModel) {
@@ -37,7 +39,7 @@ class ItemTableViewCell: UITableViewCell {
     }
 }
 
-extension ItemTableViewCell {
+private extension ItemTableViewCell {
     /******************************************/
     /* View */
     func setupView(with viewModel: ItemTableViewCellViewModel) {

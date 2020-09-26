@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum ItemCategory: Int, Codable {
+enum ItemCategory: Int, Codable, CaseIterable {
     case vehicles = 1
     case clothes = 2
     case handiwork = 3

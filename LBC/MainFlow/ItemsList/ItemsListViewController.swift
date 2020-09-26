@@ -8,39 +8,83 @@
 
 import UIKit
 
-class ItemsListViewController: BaseViewController {
+final class ItemsListViewController: BaseViewController {
     private let viewModel: ItemsListViewModel
+    
+    private let tableView: UITableView
     
     public init(with viewModel: ItemsListViewModel) {
         self.viewModel = viewModel
+        self.tableView = UITableView()
         
         super.init(nibName: nil, bundle: ItemsListViewController.bundle)
+        
         self.viewModel.delegate = self
     }
 
-    /******************************************/
-    /* View */
-    private lazy var tableView: UITableView = setupTableView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setupView()
-        viewModel.fetchItems()
+        setupNavigationBar()
+        setupView()
+    
+        self.showLoader { [weak self] in
+            self?.viewModel.fetchItems()
+        }
     }
 }
 
-extension ItemsListViewController {
+private extension ItemsListViewController {
+    /******************************************/
+    /* NavigationBar */
+    func setupNavigationBar() {
+        setupNavigationBarTitle()
+        setupFilterBarButton()
+    }
+    
+    func setupNavigationBarTitle() {
+        navigationItem.title = "Le bon coin"
+    }
+    
+    func setupFilterBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "filter"),
+            style: .plain,
+            target: self,
+            action: #selector(filterBarButtonPressed(sender:))
+        )
+    }
+    
+    /******************************************/
+    /* Actions */
+    @objc func filterBarButtonPressed(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(
+            title: "Filter categories",
+            message: "Select categories you want to display, blue options are visible, red options are hidden",
+            preferredStyle: .actionSheet)
+        viewModel.filters.forEach { (categoryFilter) in
+            let alertActionStyle: UIAlertAction.Style = categoryFilter.isVisible ? .default : .destructive
+            
+            let action = UIAlertAction(
+                title: categoryFilter.itemCategory.name,
+                style: alertActionStyle) { [weak self] _ in
+                    self?.viewModel.toggleCategory(for: categoryFilter)
+            }
+            alertController.addAction(action)
+        }
+        present(alertController, animated: true)
+    }
+    
     /******************************************/
     /* View */
     func setupView() {
         setupTableView()
     }
     
-    func setupTableView() -> UITableView {
-        let tableView = UITableView()
+    func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +94,6 @@ extension ItemsListViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        return tableView
     }
 }
 
@@ -58,7 +101,8 @@ extension ItemsListViewController: UITableViewDelegate {
     /******************************************/
     /* UITableViewDelegate */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let item = viewModel.items[indexPath.row]
+        viewModel.output?.showItemDetails(item: item)
     }
 }
 
@@ -83,14 +127,18 @@ extension ItemsListViewController: UITableViewDataSource {
     }
 }
 
-extension ItemsListViewController: ItemListViewModelDelegate {
+extension ItemsListViewController: ItemsListViewModelDelegate {
     func itemsLoaded() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        self.hideLoader { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
     }
     
     func errorOccured() {
-        
+        self.hideLoader { [weak self] in
+            self?.snackBarController.error(message: "Couldn't load data")
+        }
     }
 }

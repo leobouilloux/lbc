@@ -27,31 +27,31 @@ final class ApplicationCoordinator: Coordinator {
             default: childCoordinators.forEach { $0.start(with: option, presentationType: .root) }
             }
         } else {
-            runMainFlow(presentationType: presentationType)
-//            runSplashScreenFlow()
+            runSplashScreenFlow(presentationType: .root)
         }
     }
     
-//    private func runSplashScreenFlow(with option: DeepLinkOption? = nil) {
-//        let coordinator = coordinatorFactory.makeSplashScreenCoordinator(with: provider)
-//        coordinator.output.finishFlowAction = {
-//            self?.removeDependency(coordinator)
-//            self?.runMainFlow()
-//
-//            }
-//        addDependency(coordinator)
-//        coordinator.start(with: option)
-//
-//        window.rootViewController = coordinator.router.toPresent()
-//    }
+    private func runSplashScreenFlow(with option: DeepLinkOption? = nil, presentationType: PresentationType) {
+        let coordinator = coordinatorFactory.makeSplashScreenCoordinator(with: provider)
+        coordinator.output = self
+        addDependency(coordinator)
+        coordinator.start(with: option)
+
+        window.rootViewController = coordinator.router.toPresent()
+    }
     
     private func runMainFlow(with option: DeepLinkOption? = nil, presentationType: PresentationType) {
-        let provider = NetworkProvider()
-        window.rootViewController = ItemsListViewController(with: ItemsListViewModel(provider: provider))
+        let coordinator = coordinatorFactory.makeMainCoordinator(with: provider)
+        addDependency(coordinator)
+        coordinator.start(with: option, presentationType: presentationType)
+
+        window.rootViewController = coordinator.router.toPresent()
     }
-//        let coordinator = TabbarFactory().makeTabbarCoordinator(provider: provider)
-//        addDependency(coordinator)
-//        coordinator.start(with: option)
-//
-//        window.rootViewController = coordinator.tabbarRouter.toPresent()
+}
+
+extension ApplicationCoordinator: SplashScreenCoordinatorOutput {
+    func didFinishLoading(coordinator: Coordinator) {
+        removeDependency(coordinator)
+        runMainFlow(presentationType: .root)
+    }
 }

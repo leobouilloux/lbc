@@ -28,6 +28,7 @@ class UIImageLoader {
             } catch {
                 DispatchQueue.main.async {
                     imageView.image = UIImage(named: "camera-off")
+                    imageView.tintColor = .white
                     imageView.contentMode = .center
                 }
             }

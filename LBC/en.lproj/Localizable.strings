@@ -5,3 +5,23 @@
   Created by Leo Marcotte on 29/09/2020.
   Copyright © 2020 Leo Marcotte. All rights reserved.
 */
+
+// CategoriesFilter
+"categoriesFilter.confirmButtonTitle" = "Apply new filters";
+"categoriesFilter.visibleCategories" = "Visible categories";
+"categoriesFilter.hiddenCategories" = "Hidden categories";
+// SplashScreen
+"splashScreen.avatarCaption" = "Technical test project made by Léo Marcotte";
+
+// Item categories
+"itemCategory.vehicles" = "Vehicles";
+"itemCategory.clothes" = "Clothes";
+"itemCategory.handiwork" = "DIY";
+"itemCategory.home" = "Home";
+"itemCategory.toys" = "Toys";
+"itemCategory.realEstate" = "Real Estate";
+"itemCategory.entertainement" = "Entertainement";
+"itemCategory.technologies" = "Technologies";
+"itemCategory.serviceDelivery" = "Delivery Services";
+"itemCategory.pets" = "Pets";
+"itemCategory.childcareArticles" = "Childcare Articles";

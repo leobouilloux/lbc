@@ -9,17 +9,23 @@
 import UIKit
 
 class GradientTag: UIView {
-    lazy var label: UILabel = setupLabel()
-        
+    let label = UILabel()
     var gradientColors: (UIColor, UIColor) = (.white, .white)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
+        sharedInit()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
+        sharedInit()
+    }
+    
+    func sharedInit() {
+        setupLabel()
     }
     
     override func draw(_ rect: CGRect) {
@@ -40,8 +46,9 @@ class GradientTag: UIView {
 }
 
 private extension GradientTag {
-    func setupLabel() -> UILabel {
-        let label = UILabel()
+    /******************************************/
+    /* View */
+    func setupLabel() {
         label.textColor = .white
         addSubview(label)
         
@@ -52,6 +59,5 @@ private extension GradientTag {
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
-        return label
     }
 }

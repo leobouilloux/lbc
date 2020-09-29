@@ -9,10 +9,10 @@
 import UIKit
 
 final class ItemTableViewCell: UITableViewCell {
-    let itemImageView = UIImageView()
-    let titleLabel = UILabel()
-    let categoryTag = GradientTag()
-    let priceLabel = UILabel()
+    private let itemImageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let categoryTag = GradientTag()
+    private let priceLabel = UILabel()
     
     var viewModel: ItemTableViewCellViewModel?
     
@@ -72,7 +72,6 @@ private extension ItemTableViewCell {
     func setupTitleLabel(with viewModel: ItemTableViewCellViewModel) {
         titleLabel.text = viewModel.title
         titleLabel.font = .systemFont(ofSize: 16)
-        titleLabel.textColor = .black
         addSubview(titleLabel)
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -102,7 +101,6 @@ private extension ItemTableViewCell {
     
     func setupPriceLabel(with viewModel: ItemTableViewCellViewModel) {
         priceLabel.text = viewModel.price
-        priceLabel.textColor = .black
         priceLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 16, weight: .bold)
         addSubview(priceLabel)
 

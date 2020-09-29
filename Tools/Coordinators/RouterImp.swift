@@ -9,10 +9,10 @@
 import UIKit
 
 public class RouterImp: NSObject, Router {
-    private weak var rootController: UINavigationController?
+    private weak var rootController: NavigationController?
     private var completions: [UIViewController : () -> Void]
 
-    public init(rootController: UINavigationController) {
+    public init(rootController: NavigationController) {
         self.rootController = rootController
         completions = [:]
     }
@@ -49,7 +49,7 @@ public class RouterImp: NSObject, Router {
     public func push(_ module: Presentable?, animated: Bool, completion: (() -> Void)?) {
         guard
             let controller = module?.toPresent(),
-            (controller is UINavigationController == false)
+            (controller is NavigationController == false)
             else { assertionFailure("Deprecated push NavigationController."); return }
 
         if let completion = completion {
@@ -133,7 +133,7 @@ public class RouterImp: NSObject, Router {
         if rootController.isModal {
             rootController.dismiss(animated: animated)
         } else {
-            rootController.popViewController(animated: animated)
+            _ = rootController.popViewController(animated: animated)
         }
     }
 

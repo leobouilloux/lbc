@@ -38,6 +38,14 @@ private extension MainCoordinator {
         let presentable = factory.makeItemDetailsPresentable(with: viewModel)
         router.navigate(to: presentable, with: presentationType)
     }
+    
+    func showCategoriesFilter(filters: [CategoryFilter], presentationType: PresentationType) {
+        let viewModel = CategoriesFilterViewModel(filters: filters)
+        viewModel.output = self
+        
+        let presentable = factory.makeCategoriesFilterPresentable(with: viewModel)
+        router.navigate(to: presentable, with: presentationType)
+    }
 }
 
 /******************************************/
@@ -45,5 +53,19 @@ private extension MainCoordinator {
 extension MainCoordinator: ItemsListOutput {
     func showItemDetails(item: Item) {
         showItemDetails(item: item, presentationType: .push)
+    }
+    
+    func showCategoriesFilter(filters: [CategoryFilter]) {
+        showCategoriesFilter(filters: filters, presentationType: .present)
+    }
+}
+
+extension MainCoordinator: CategoriesFilterOutput {
+    func updateFilters(filters: [CategoryFilter]) {
+        if let navController = router.toPresent() as? NavigationController,
+            let rootController = navController.viewControllers.first as? ItemsListViewController {
+            rootController.viewModel.filters = filters
+            rootController.viewModel.fetchItems()
+        }
     }
 }

@@ -10,10 +10,10 @@ import UIKit
 
 public class NavigationController: UINavigationController {
     private let backButton = UIBarButtonItem(
-        image: UIImage(named: "chevron.left"),
+        image: UIImage(named: "chevron-left"),
         style: .plain,
         target: nil,
-        action: nil
+        action: #selector(backButtonPressed(sender:))
     )
     private let closeButton = UIBarButtonItem(
         image: UIImage(named: "xmark"),
@@ -92,6 +92,8 @@ public class NavigationController: UINavigationController {
 }
 
 private extension NavigationController {
+    /******************************************/
+    /* View */
     func setupView() {
         setupNavigationBar()
     }
@@ -100,6 +102,17 @@ private extension NavigationController {
         navigationItem.backBarButtonItem = nil
         navigationItem.leftBarButtonItem = closeButton
     }
+    
+    /******************************************/
+    /* Actions */
+    @objc func backButtonPressed(sender: UIBarButtonItem) {
+        _ = self.popViewController(animated: true)
+    }
+    
+    @objc func closeButtonPressed(sender: UIBarButtonItem) {
+        
+    }
+
 
 //    // *****************************************************************************
 //    // - MARK: Rx Bindings

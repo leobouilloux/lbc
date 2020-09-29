@@ -6,15 +6,6 @@
 //  Copyright © 2020 Leo Marcotte. All rights reserved.
 //
 
-class CategoryFilter {
-    var itemCategory: ItemCategory
-    var isVisible: Bool = true
-    
-    init(itemCategory: ItemCategory) {
-        self.itemCategory = itemCategory
-    }
-}
-
 final class ItemsListViewModel {
     let provider: Provider
     var items = [Item]()

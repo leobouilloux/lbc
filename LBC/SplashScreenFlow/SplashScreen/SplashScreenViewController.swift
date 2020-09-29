@@ -9,7 +9,7 @@
 import UIKit
 
 final class SplashScreenViewController: BaseViewController {
-    private let viewModel: SplashScreenViewModel
+    let viewModel: SplashScreenViewModel
 
     private let logoImageView: UIImageView
     private let avatarView: UIView
@@ -133,7 +133,7 @@ private extension SplashScreenViewController {
         avatarLabel.font = .boldSystemFont(ofSize: 14)
         avatarLabel.textColor = .white
         avatarLabel.numberOfLines = 0
-        avatarLabel.text = "A technical test project made by Leo Marcotte"
+        avatarLabel.text = Loc.SplashScreen.avatarCaption
         avatarView.addSubview(avatarLabel)
         
         avatarLabel.translatesAutoresizingMaskIntoConstraints = false

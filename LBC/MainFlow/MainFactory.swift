@@ -14,4 +14,8 @@ final class MainFactory {
     func makeItemDetailsPresentable(with viewModel: ItemDetailsViewModel) -> Presentable {
         return ItemDetailsViewController(with: viewModel)
     }
+    
+    func makeCategoriesFilterPresentable(with viewModel: CategoriesFilterViewModel) -> Presentable {
+        return CategoriesFilterViewController(with: viewModel)
+    }
 }

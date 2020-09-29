@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemTableViewCellViewModel {
+final class ItemTableViewCellViewModel {
     var image: UIImage
     var imageURL: URL?
     

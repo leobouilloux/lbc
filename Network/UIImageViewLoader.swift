@@ -16,20 +16,34 @@ class UIImageLoader {
     
     private init() {}
     
-    func load(_ url: URL, for imageView: UIImageView) {
+    func load(_ url: URL, for imageView: UIImageView, contentMode: UIImageView.ContentMode) {
         let token = imageLoader.loadImage(url) { result in
             defer { self.uuidMap.removeValue(forKey: imageView) }
             do {
                 let image = try result.get()
                 DispatchQueue.main.async {
-                    imageView.image = image
-                    imageView.contentMode = .scaleAspectFill
+                    UIView
+                        .transition(
+                            with: imageView,
+                            duration: 0.3,
+                            options: .transitionCrossDissolve,
+                            animations: {
+                                imageView.image = image
+                                imageView.contentMode = contentMode
+                        }, completion: nil)
                 }
             } catch {
                 DispatchQueue.main.async {
-                    imageView.image = UIImage(named: "camera-off")
-                    imageView.tintColor = .white
-                    imageView.contentMode = .center
+                    UIView
+                        .transition(
+                            with: imageView,
+                            duration: 0.3,
+                            options: .transitionCrossDissolve,
+                            animations: {
+                                imageView.image = UIImage(named: "camera-off")
+                                imageView.tintColor = .white
+                                imageView.contentMode = .center
+                        }, completion: nil)
                 }
             }
         }
@@ -47,8 +61,8 @@ class UIImageLoader {
 }
 
 extension UIImageView {
-    func loadImage(at url: URL) {
-        UIImageLoader.loader.load(url, for: self)
+    func loadImage(at url: URL, contentMode: UIImageView.ContentMode = .scaleAspectFill) {
+        UIImageLoader.loader.load(url, for: self, contentMode: contentMode)
     }
     
     func cancelImageLoad() {

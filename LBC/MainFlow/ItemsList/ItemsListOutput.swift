@@ -8,4 +8,5 @@
 
 protocol ItemsListOutput {
     func showItemDetails(item: Item)
+    func showCategoriesFilter(filters: [CategoryFilter])
 }

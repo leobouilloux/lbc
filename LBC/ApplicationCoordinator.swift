@@ -44,7 +44,7 @@ final class ApplicationCoordinator: Coordinator {
         let coordinator = coordinatorFactory.makeMainCoordinator(with: provider)
         addDependency(coordinator)
         coordinator.start(with: option, presentationType: presentationType)
-
+        
         window.rootViewController = coordinator.router.toPresent()
     }
 }

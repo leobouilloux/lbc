@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  LBC
+
+  Created by Leo Marcotte on 29/09/2020.
+  Copyright © 2020 Leo Marcotte. All rights reserved.
+*/
+
+// Errors
+"error.noDataReceived" = "Aucune donnée n'est renvoyée par le serveur distant";
+"error.jsonDecodeFailed" = "Les données reçue ne sont pas correctement formatées";
+"error.errorReceived" = "Erreur réseau";
+
+
+// CategoriesFilter
+"categoriesFilter.confirmButtonTitle" = "Appliquer les nouveaux filtres";
+"categoriesFilter.visibleCategories" = "Catégories visibles";
+"categoriesFilter.hiddenCategories" = "Catégories masquées";
+
+// SplashScreen
+"splashScreen.avatarCaption" = "Test technique réalisé par Léo Marcotte";
+
+// Item Categories
+"itemCategory.vehicles" = "Véhicules";
+"itemCategory.clothes" = "Vêtements";
+"itemCategory.handiwork" = "Bricolage";
+"itemCategory.home" = "Maison";
+"itemCategory.toys" = "Jouets";
+"itemCategory.realEstate" = "Immobilier";
+"itemCategory.entertainement" = "Divertissement";
+"itemCategory.technologies" = "Technologies";
+"itemCategory.serviceDelivery" = "Prestation de services";
+"itemCategory.pets" = "Animaux";
+"itemCategory.childcareArticles" = "Puériculture";

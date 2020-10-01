@@ -9,7 +9,7 @@
 import UIKit
 
 final class ItemDetailsViewController: BaseViewController {
-    let viewModel: ItemDetailsViewModel
+    let viewModel: ItemDetailsViewModelInterface
 
     private let scrollView: UIScrollView
     private let itemView: UIView
@@ -20,7 +20,7 @@ final class ItemDetailsViewController: BaseViewController {
     private let itemDescriptionLabel: UILabel
     private let itemCreationDateLabel: UILabel
 
-    init(with viewModel: ItemDetailsViewModel) {
+    init(with viewModel: ItemDetailsViewModelInterface) {
         self.viewModel = viewModel
         self.scrollView = UIScrollView()
         self.itemView = UIView()

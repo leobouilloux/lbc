@@ -123,6 +123,12 @@
 		B35F0BF925254D810041A792 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0BF625254D810041A792 /* NetworkError.swift */; };
 		B35F0BFC25254DC30041A792 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0BFA25254DC30041A792 /* MockError.swift */; };
 		B35F0BFD25254DC30041A792 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0BFA25254DC30041A792 /* MockError.swift */; };
+		B35F0BFF252568830041A792 /* CategoryTableViewCellViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0BFE252568830041A792 /* CategoryTableViewCellViewModelInterface.swift */; };
+		B35F0C01252569610041A792 /* CategoriesFilterViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C00252569610041A792 /* CategoriesFilterViewModelInterface.swift */; };
+		B35F0C0325256A380041A792 /* ItemDetailsViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0225256A380041A792 /* ItemDetailsViewModelInterface.swift */; };
+		B35F0C0525256ACB0041A792 /* ItemTableViewCellViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0425256ACB0041A792 /* ItemTableViewCellViewModelInterface.swift */; };
+		B35F0C0725256BDF0041A792 /* ItemsListViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0625256BDF0041A792 /* ItemsListViewModelInterface.swift */; };
+		B35F0C0925256CA00041A792 /* SplashScreenViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0825256CA00041A792 /* SplashScreenViewModelInterface.swift */; };
 		B36077EB251C2D1300CF1C92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36077EA251C2D1300CF1C92 /* AppDelegate.swift */; };
 		B36077ED251C2D1300CF1C92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36077EC251C2D1300CF1C92 /* SceneDelegate.swift */; };
 		B36077F4251C2D1400CF1C92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B36077F3251C2D1400CF1C92 /* Assets.xcassets */; };
@@ -182,6 +188,18 @@
 		B3C7678E251F884C0052ED99 /* SplashScreenOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C7678D251F884C0052ED99 /* SplashScreenOutput.swift */; };
 		B3C76790251F8A9C0052ED99 /* SplashScreenCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C7678F251F8A9C0052ED99 /* SplashScreenCoordinatorFactory.swift */; };
 		B3D67D9A2525099700356F81 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D67D992525099700356F81 /* Array+Extension.swift */; };
+		B3E51B7525256E9D00B29357 /* SplashScreenViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0825256CA00041A792 /* SplashScreenViewModelInterface.swift */; };
+		B3E51B7625256E9F00B29357 /* SplashScreenViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0825256CA00041A792 /* SplashScreenViewModelInterface.swift */; };
+		B3E51B7725256EA400B29357 /* ItemsListViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0625256BDF0041A792 /* ItemsListViewModelInterface.swift */; };
+		B3E51B7825256EA500B29357 /* ItemsListViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0625256BDF0041A792 /* ItemsListViewModelInterface.swift */; };
+		B3E51B7925256EB100B29357 /* CategoryTableViewCellViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0BFE252568830041A792 /* CategoryTableViewCellViewModelInterface.swift */; };
+		B3E51B7A25256EB200B29357 /* CategoryTableViewCellViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0BFE252568830041A792 /* CategoryTableViewCellViewModelInterface.swift */; };
+		B3E51B7B25256EB500B29357 /* CategoriesFilterViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C00252569610041A792 /* CategoriesFilterViewModelInterface.swift */; };
+		B3E51B7C25256EB500B29357 /* CategoriesFilterViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C00252569610041A792 /* CategoriesFilterViewModelInterface.swift */; };
+		B3E51B7D25256EB900B29357 /* ItemDetailsViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0225256A380041A792 /* ItemDetailsViewModelInterface.swift */; };
+		B3E51B7E25256EBA00B29357 /* ItemDetailsViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0225256A380041A792 /* ItemDetailsViewModelInterface.swift */; };
+		B3E51B7F25256EBC00B29357 /* ItemTableViewCellViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0425256ACB0041A792 /* ItemTableViewCellViewModelInterface.swift */; };
+		B3E51B8025256EBD00B29357 /* ItemTableViewCellViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F0C0425256ACB0041A792 /* ItemTableViewCellViewModelInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +227,12 @@
 		B35F0BF2252541380041A792 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		B35F0BF625254D810041A792 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B35F0BFA25254DC30041A792 /* MockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
+		B35F0BFE252568830041A792 /* CategoryTableViewCellViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCellViewModelInterface.swift; sourceTree = "<group>"; };
+		B35F0C00252569610041A792 /* CategoriesFilterViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesFilterViewModelInterface.swift; sourceTree = "<group>"; };
+		B35F0C0225256A380041A792 /* ItemDetailsViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewModelInterface.swift; sourceTree = "<group>"; };
+		B35F0C0425256ACB0041A792 /* ItemTableViewCellViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCellViewModelInterface.swift; sourceTree = "<group>"; };
+		B35F0C0625256BDF0041A792 /* ItemsListViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListViewModelInterface.swift; sourceTree = "<group>"; };
+		B35F0C0825256CA00041A792 /* SplashScreenViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewModelInterface.swift; sourceTree = "<group>"; };
 		B36077E7251C2D1300CF1C92 /* LBC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B36077EA251C2D1300CF1C92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B36077EC251C2D1300CF1C92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -368,6 +392,7 @@
 				B366CE6D25234A0B001A3CE0 /* Cells */,
 				B366CE692523444E001A3CE0 /* CategoriesFilterViewController.swift */,
 				B366CE6B25234467001A3CE0 /* CategoriesFilterViewModel.swift */,
+				B35F0C00252569610041A792 /* CategoriesFilterViewModelInterface.swift */,
 				B366CE7425235FC2001A3CE0 /* CategoriesFilterOutput.swift */,
 			);
 			path = CategoriesFilter;
@@ -378,6 +403,7 @@
 			children = (
 				B366CE6E25234A64001A3CE0 /* CategoryTableViewCell.swift */,
 				B366CE7025234A76001A3CE0 /* CategoryTableViewCellViewModel.swift */,
+				B35F0BFE252568830041A792 /* CategoryTableViewCellViewModelInterface.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -486,6 +512,7 @@
 				B3C7675F251C3D200052ED99 /* ItemsListViewController.swift */,
 				B3C7677B251E200A0052ED99 /* ItemsListOutput.swift */,
 				B3C76761251C3D500052ED99 /* ItemsListViewModel.swift */,
+				B35F0C0625256BDF0041A792 /* ItemsListViewModelInterface.swift */,
 			);
 			path = ItemsList;
 			sourceTree = "<group>";
@@ -495,6 +522,7 @@
 			children = (
 				B3C7677F251F83CC0052ED99 /* ItemDetailsViewController.swift */,
 				B321FEB12521103A00E8EE4B /* ItemDetailsViewModel.swift */,
+				B35F0C0225256A380041A792 /* ItemDetailsViewModelInterface.swift */,
 			);
 			path = ItemDetails;
 			sourceTree = "<group>";
@@ -504,6 +532,7 @@
 			children = (
 				B3C76764251C400B0052ED99 /* ItemTableViewCell.swift */,
 				B3C76769251DE2930052ED99 /* ItemTableViewCellViewModel.swift */,
+				B35F0C0425256ACB0041A792 /* ItemTableViewCellViewModelInterface.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -540,6 +569,7 @@
 			children = (
 				B3C76782251F84D70052ED99 /* SplashScreenViewController.swift */,
 				B3C76784251F84E10052ED99 /* SplashScreenViewModel.swift */,
+				B35F0C0825256CA00041A792 /* SplashScreenViewModelInterface.swift */,
 				B3C7678D251F884C0052ED99 /* SplashScreenOutput.swift */,
 			);
 			path = SplashScreen;
@@ -692,6 +722,7 @@
 			files = (
 				B3C76730251C2F920052ED99 /* BaseViewController.swift in Sources */,
 				B36077EB251C2D1300CF1C92 /* AppDelegate.swift in Sources */,
+				B35F0BFF252568830041A792 /* CategoryTableViewCellViewModelInterface.swift in Sources */,
 				B3C76780251F83CC0052ED99 /* ItemDetailsViewController.swift in Sources */,
 				B3C7678E251F884C0052ED99 /* SplashScreenOutput.swift in Sources */,
 				B3C76733251C300F0052ED99 /* SnackBarController.swift in Sources */,
@@ -702,6 +733,7 @@
 				B3C76785251F84E10052ED99 /* SplashScreenViewModel.swift in Sources */,
 				B3C76765251C400B0052ED99 /* ItemTableViewCell.swift in Sources */,
 				B3C7676E251DEC5C0052ED99 /* UIImageViewLoader.swift in Sources */,
+				B35F0C0525256ACB0041A792 /* ItemTableViewCellViewModelInterface.swift in Sources */,
 				B3C76777251E07380052ED99 /* GradientBackgroundLabel.swift in Sources */,
 				B3C7677C251E200A0052ED99 /* ItemsListOutput.swift in Sources */,
 				B3C7676C251DEB920052ED99 /* ImageLoader.swift in Sources */,
@@ -713,6 +745,7 @@
 				B3C76736251C30390052ED99 /* SnackBar.swift in Sources */,
 				B3C76762251C3D500052ED99 /* ItemsListViewModel.swift in Sources */,
 				B3C76745251C32150052ED99 /* RouterImp.swift in Sources */,
+				B35F0C0325256A380041A792 /* ItemDetailsViewModelInterface.swift in Sources */,
 				B3C76788251F87180052ED99 /* SplashScreenCoordinator.swift in Sources */,
 				B3C7675A251C37300052ED99 /* NetworkProvider.swift in Sources */,
 				B366CE6C25234467001A3CE0 /* CategoriesFilterViewModel.swift in Sources */,
@@ -726,6 +759,7 @@
 				B3C7678C251F87BD0052ED99 /* SplashScreenCoordinatorOutput.swift in Sources */,
 				B3C7673A251C30820052ED99 /* Style.swift in Sources */,
 				B3C76749251C32510052ED99 /* BaseCoordinator.swift in Sources */,
+				B35F0C0725256BDF0041A792 /* ItemsListViewModelInterface.swift in Sources */,
 				B366CE7525235FC2001A3CE0 /* CategoriesFilterOutput.swift in Sources */,
 				B3D67D9A2525099700356F81 /* Array+Extension.swift in Sources */,
 				B366CE7125234A76001A3CE0 /* CategoryTableViewCellViewModel.swift in Sources */,
@@ -737,11 +771,13 @@
 				B3C76772251DEEFF0052ED99 /* ItemImagesURL.swift in Sources */,
 				B3C76755251C348C0052ED99 /* ApplicationCoordinator.swift in Sources */,
 				B3C76758251C36290052ED99 /* Provider.swift in Sources */,
+				B35F0C0925256CA00041A792 /* SplashScreenViewModelInterface.swift in Sources */,
 				B3C7674E251C33000052ED99 /* NSObject+Extension.swift in Sources */,
 				B3C76741251C31D70052ED99 /* CoordinatorFactory.swift in Sources */,
 				B3C7673F251C31B40052ED99 /* PresentationType.swift in Sources */,
 				B3C7676A251DE2930052ED99 /* ItemTableViewCellViewModel.swift in Sources */,
 				B35F0BF3252541380041A792 /* Assets.swift in Sources */,
+				B35F0C01252569610041A792 /* CategoriesFilterViewModelInterface.swift in Sources */,
 				B3C76747251C32360052ED99 /* Presentable.swift in Sources */,
 				B36BCA94251FB73300B2A791 /* MainFactory.swift in Sources */,
 				B366CE6A2523444E001A3CE0 /* CategoriesFilterViewController.swift in Sources */,
@@ -768,6 +804,7 @@
 				B35F0BA025251D290041A792 /* NavigationController.swift in Sources */,
 				B35F0BA825251D3C0041A792 /* SnackBarType.swift in Sources */,
 				B35F0BFC25254DC30041A792 /* MockError.swift in Sources */,
+				B3E51B7925256EB100B29357 /* CategoryTableViewCellViewModelInterface.swift in Sources */,
 				B35F0B842525197E0041A792 /* Router.swift in Sources */,
 				B35F0BD22525260A0041A792 /* MainCoordinatorFactory.swift in Sources */,
 				B35F0B7E252519790041A792 /* UIColor+Extension.swift in Sources */,
@@ -783,6 +820,8 @@
 				B35F0B7F252519790041A792 /* UITableViewCell+extension.swift in Sources */,
 				B35F0BBF252525F40041A792 /* CategoriesFilterViewModel.swift in Sources */,
 				B35F0BD8252526160041A792 /* SplashScreenOutput.swift in Sources */,
+				B3E51B7F25256EBC00B29357 /* ItemTableViewCellViewModelInterface.swift in Sources */,
+				B3E51B7D25256EB900B29357 /* ItemDetailsViewModelInterface.swift in Sources */,
 				B35F0B7C252519790041A792 /* NSObject+Extension.swift in Sources */,
 				B35F0BBD252525F40041A792 /* CategoryTableViewCellViewModel.swift in Sources */,
 				B35F0B882525197E0041A792 /* DeepLinkOption.swift in Sources */,
@@ -795,9 +834,11 @@
 				B35F0B78252519740041A792 /* Provider.swift in Sources */,
 				B35F0BED252526970041A792 /* ItemsListViewController.swift in Sources */,
 				B35F0B862525197E0041A792 /* Presentable.swift in Sources */,
+				B3E51B7525256E9D00B29357 /* SplashScreenViewModelInterface.swift in Sources */,
 				B35F0BEE252526970041A792 /* SplashScreenViewController.swift in Sources */,
 				B35F0B80252519790041A792 /* Array+Extension.swift in Sources */,
 				B35F0B7A252519740041A792 /* ImageLoader.swift in Sources */,
+				B3E51B7725256EA400B29357 /* ItemsListViewModelInterface.swift in Sources */,
 				B35F0B752525193C0041A792 /* ItemCategory.swift in Sources */,
 				B35F0BA625251D3C0041A792 /* SnackBarController.swift in Sources */,
 				B35F0B832525197E0041A792 /* CoordinatorFactory.swift in Sources */,
@@ -810,6 +851,7 @@
 				B35F0BDC252526160041A792 /* SplashScreenCoordinatorFactory.swift in Sources */,
 				B35F0BE9252526970041A792 /* UIViewController+Extension.swift in Sources */,
 				B35F0BD12525260A0041A792 /* MainFactory.swift in Sources */,
+				B3E51B7B25256EB500B29357 /* CategoriesFilterViewModelInterface.swift in Sources */,
 				B35F0BBC252525F40041A792 /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -824,6 +866,7 @@
 				B35F0BC8252525FC0041A792 /* ItemDetailsViewController.swift in Sources */,
 				B35F0BC9252525FC0041A792 /* ItemDetailsViewModel.swift in Sources */,
 				B35F0BCD252526060041A792 /* ItemTableViewCell.swift in Sources */,
+				B3E51B7625256E9F00B29357 /* SplashScreenViewModelInterface.swift in Sources */,
 				B35F0B9A25251CB50041A792 /* NSObject+Extension.swift in Sources */,
 				B35F0B9C25251CB50041A792 /* UIColor+Extension.swift in Sources */,
 				B35F0BC5252525F50041A792 /* CategoriesFilterOutput.swift in Sources */,
@@ -834,8 +877,11 @@
 				B35F0B9925251CA90041A792 /* Loc.swift in Sources */,
 				B35F0BFD25254DC30041A792 /* MockError.swift in Sources */,
 				B35F0B9325251AE40041A792 /* MockProvider.swift in Sources */,
+				B3E51B7A25256EB200B29357 /* CategoryTableViewCellViewModelInterface.swift in Sources */,
 				B35F0BAA25251D3D0041A792 /* SnackBar.swift in Sources */,
+				B3E51B8025256EBD00B29357 /* ItemTableViewCellViewModelInterface.swift in Sources */,
 				B35F0BAF25251D700041A792 /* PresentationType.swift in Sources */,
+				B3E51B7C25256EB500B29357 /* CategoriesFilterViewModelInterface.swift in Sources */,
 				B35F0BC4252525F50041A792 /* CategoriesFilterViewModel.swift in Sources */,
 				B35F0BB025251D700041A792 /* RouterImp.swift in Sources */,
 				B35F0BA225251D320041A792 /* GradientBackgroundLabel.swift in Sources */,
@@ -858,6 +904,7 @@
 				B35F0BC1252525F50041A792 /* CategoryTableViewCell.swift in Sources */,
 				B35F0BE82525267D0041A792 /* ImageLoader.swift in Sources */,
 				B35F0BE0252526160041A792 /* SplashScreenCoordinator.swift in Sources */,
+				B3E51B7825256EA500B29357 /* ItemsListViewModelInterface.swift in Sources */,
 				B35F0BAE25251D700041A792 /* Coordinator.swift in Sources */,
 				B35F0BB9252525CE0041A792 /* ItemsListViewModel.swift in Sources */,
 				B35F0BA925251D3D0041A792 /* SnackBarController.swift in Sources */,
@@ -873,6 +920,7 @@
 				B35F0BE2252526160041A792 /* SplashScreenCoordinatorOutput.swift in Sources */,
 				B35F0BE7252526750041A792 /* UIImageViewLoader.swift in Sources */,
 				B35F0BAD25251D5A0041A792 /* Style.swift in Sources */,
+				B3E51B7E25256EBA00B29357 /* ItemDetailsViewModelInterface.swift in Sources */,
 				B35F0BDE252526160041A792 /* SplashScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

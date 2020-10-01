@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CategoryTableViewCellViewModel {
+final class CategoryTableViewCellViewModel: CategoryTableViewCellViewModelInterface {
     let title: String
     let gradientColors: (UIColor, UIColor)
 

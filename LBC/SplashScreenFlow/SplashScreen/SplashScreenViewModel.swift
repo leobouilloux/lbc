@@ -6,7 +6,7 @@
 //  Copyright © 2020 Leo Marcotte. All rights reserved.
 //
 
-final class SplashScreenViewModel {
+final class SplashScreenViewModel: SplashScreenViewModelInterface {
     var output: SplashScreenOutput?
 
     init(with: Provider) {}

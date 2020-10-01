@@ -9,13 +9,13 @@
 import UIKit
 
 final class ItemsListViewController: BaseViewController {
-    let viewModel: ItemsListViewModel
+    let viewModel: ItemsListViewModelInterface
 
     private let tableView: UITableView
     private let refreshControl: UIRefreshControl
     private let gradientView: UIView
 
-    public init(with viewModel: ItemsListViewModel) {
+    public init(with viewModel: ItemsListViewModelInterface) {
         self.viewModel = viewModel
         self.tableView = UITableView()
         self.refreshControl = UIRefreshControl()
@@ -23,7 +23,7 @@ final class ItemsListViewController: BaseViewController {
 
         super.init(nibName: nil, bundle: ItemsListViewController.bundle)
 
-        self.viewModel.delegate = self
+        self.viewModel.setDelegate(with: self)
     }
 
     override func viewDidLoad() {

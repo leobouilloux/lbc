@@ -6,7 +6,7 @@
 //  Copyright © 2020 Leo Marcotte. All rights reserved.
 //
 
-final class CategoriesFilterViewModel {
+final class CategoriesFilterViewModel: CategoriesFilterViewModelInterface {
     let filters: [CategoryFilter]
     let activeCategoriesHeader: String
     let hiddenCategoriesHeader: String

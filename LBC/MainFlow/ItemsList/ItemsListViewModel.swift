@@ -6,13 +6,13 @@
 //  Copyright © 2020 Leo Marcotte. All rights reserved.
 //
 
-final class ItemsListViewModel {
+final class ItemsListViewModel: ItemsListViewModelInterface {
     let provider: Provider
     var items = [Item]()
+    var filters = [CategoryFilter]()
+
     weak var delegate: ItemsListViewModelDelegate?
     var output: ItemsListOutput?
-
-    var filters = [CategoryFilter]()
 
     init(provider: Provider) {
         self.provider = provider
@@ -24,6 +24,14 @@ final class ItemsListViewModel {
         ItemCategory.allCases.forEach { itemCategory in
             filters.append(CategoryFilter(itemCategory: itemCategory))
         }
+    }
+
+    func setFilters(with filters: [CategoryFilter]) {
+        self.filters = filters
+    }
+
+    func setDelegate(with delegate: ItemsListViewModelDelegate) {
+        self.delegate = delegate
     }
 
     func toggleCategory(for category: CategoryFilter) {
@@ -54,7 +62,7 @@ final class ItemsListViewModel {
         self.items = filteredItems
             .sorted(by: { $0.creationDate > $1.creationDate })
             .sorted(by: { $0.isUrgent && !$1.isUrgent })
-        self.delegate?.itemsLoaded()
+        delegate?.itemsLoaded()
     }
 }
 

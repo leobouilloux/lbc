@@ -63,7 +63,7 @@ extension MainCoordinator: CategoriesFilterOutput {
     func updateFilters(filters: [CategoryFilter]) {
         if let navController = router.toPresent() as? NavigationController,
             let rootController = navController.viewControllers.first as? ItemsListViewController {
-            rootController.viewModel.filters = filters
+            rootController.viewModel.setFilters(with: filters)
             rootController.viewModel.fetchItems()
         }
     }

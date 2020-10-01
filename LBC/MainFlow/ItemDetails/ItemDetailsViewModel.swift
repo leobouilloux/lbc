@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class ItemDetailsViewModel {
+final class ItemDetailsViewModel: ItemDetailsViewModelInterface {
     let imageURL: URL?
     let title: String
     let price: String

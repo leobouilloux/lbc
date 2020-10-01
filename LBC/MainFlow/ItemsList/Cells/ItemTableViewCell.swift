@@ -14,7 +14,7 @@ final class ItemTableViewCell: UITableViewCell {
     private let categoryTag = GradientTag()
     private let priceLabel = UILabel()
 
-    var viewModel: ItemTableViewCellViewModel?
+    var viewModel: ItemTableViewCellViewModelInterface?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -26,7 +26,7 @@ final class ItemTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    func setup(with viewModel: ItemTableViewCellViewModel) {
+    func setup(with viewModel: ItemTableViewCellViewModelInterface) {
         self.viewModel = viewModel
 
         setupView(with: viewModel)
@@ -41,14 +41,14 @@ final class ItemTableViewCell: UITableViewCell {
 
 private extension ItemTableViewCell {
     /* View */
-    func setupView(with viewModel: ItemTableViewCellViewModel) {
+    func setupView(with viewModel: ItemTableViewCellViewModelInterface) {
         setupItemImage(with: viewModel)
         setupTitleLabel(with: viewModel)
         setupCategoryLabel(with: viewModel)
         setupPriceLabel(with: viewModel)
     }
 
-    func setupItemImage(with viewModel: ItemTableViewCellViewModel) {
+    func setupItemImage(with viewModel: ItemTableViewCellViewModelInterface) {
         if let url = viewModel.imageURL {
             itemImageView.loadImage(at: url)
         }
@@ -68,7 +68,7 @@ private extension ItemTableViewCell {
         itemImageView.layer.cornerRadius = 2
     }
 
-    func setupTitleLabel(with viewModel: ItemTableViewCellViewModel) {
+    func setupTitleLabel(with viewModel: ItemTableViewCellViewModelInterface) {
         titleLabel.text = viewModel.title
         titleLabel.font = .systemFont(ofSize: 16)
         addSubview(titleLabel)
@@ -82,7 +82,7 @@ private extension ItemTableViewCell {
         ])
     }
 
-    func setupCategoryLabel(with viewModel: ItemTableViewCellViewModel) {
+    func setupCategoryLabel(with viewModel: ItemTableViewCellViewModelInterface) {
         categoryTag.label.text = viewModel.category.name
         categoryTag.label.font = .boldSystemFont(ofSize: 12)
         categoryTag.label.textColor = .white
@@ -98,7 +98,7 @@ private extension ItemTableViewCell {
         ])
     }
 
-    func setupPriceLabel(with viewModel: ItemTableViewCellViewModel) {
+    func setupPriceLabel(with viewModel: ItemTableViewCellViewModelInterface) {
         priceLabel.text = viewModel.price
         priceLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 16, weight: .bold)
         addSubview(priceLabel)

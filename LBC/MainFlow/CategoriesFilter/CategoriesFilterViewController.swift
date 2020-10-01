@@ -9,12 +9,12 @@
 import UIKit
 
 final class CategoriesFilterViewController: BaseViewController {
-    let viewModel: CategoriesFilterViewModel
+    let viewModel: CategoriesFilterViewModelInterface
 
     private let tableView: UITableView
     private let confirmButton: UIButton
 
-    init(with viewModel: CategoriesFilterViewModel) {
+    init(with viewModel: CategoriesFilterViewModelInterface) {
         self.viewModel = viewModel
 
         self.tableView = UITableView()

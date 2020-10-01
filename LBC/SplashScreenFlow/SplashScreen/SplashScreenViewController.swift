@@ -9,7 +9,7 @@
 import UIKit
 
 final class SplashScreenViewController: BaseViewController {
-    let viewModel: SplashScreenViewModel
+    let viewModel: SplashScreenViewModelInterface
 
     private let logoImageView: UIImageView
     private let avatarView: UIView
@@ -17,7 +17,7 @@ final class SplashScreenViewController: BaseViewController {
     private let avatarLabel: UILabel
     private let activityIndicatorView: UIActivityIndicatorView
 
-    init(with viewModel: SplashScreenViewModel) {
+    init(with viewModel: SplashScreenViewModelInterface) {
         self.viewModel = viewModel
         self.logoImageView = UIImageView()
         self.avatarView = UIView()

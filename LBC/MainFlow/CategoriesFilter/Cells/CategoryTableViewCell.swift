@@ -11,7 +11,7 @@ import UIKit
 final class CategoryTableViewCell: UITableViewCell {
     private let categoryTag = GradientTag()
 
-    var viewModel: CategoryTableViewCellViewModel?
+    var viewModel: CategoryTableViewCellViewModelInterface?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -23,7 +23,7 @@ final class CategoryTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    func setup(with viewModel: CategoryTableViewCellViewModel) {
+    func setup(with viewModel: CategoryTableViewCellViewModelInterface) {
         self.viewModel = viewModel
 
         setupView(with: viewModel)
@@ -32,11 +32,11 @@ final class CategoryTableViewCell: UITableViewCell {
 
 private extension CategoryTableViewCell {
     /* View */
-    func setupView(with viewModel: CategoryTableViewCellViewModel) {
+    func setupView(with viewModel: CategoryTableViewCellViewModelInterface) {
         setupCategoryLabel(with: viewModel)
     }
 
-    func setupCategoryLabel(with viewModel: CategoryTableViewCellViewModel) {
+    func setupCategoryLabel(with viewModel: CategoryTableViewCellViewModelInterface) {
         categoryTag.label.text = viewModel.title
         categoryTag.label.font = .boldSystemFont(ofSize: 24)
         categoryTag.label.textColor = .white

@@ -7,7 +7,7 @@
 //
 
 final class SplashScreenFactory {
-    func makeSplashScreenPresentable(with viewModel: SplashScreenViewModel) -> Presentable {
+    func makeSplashScreenPresentable(with viewModel: SplashScreenViewModelInterface) -> Presentable {
         return SplashScreenViewController(with: viewModel)
     }
 }

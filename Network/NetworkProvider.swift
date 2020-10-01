@@ -9,15 +9,15 @@
 import Foundation
 
 class NetworkProvider: Provider {
-    func fetchData(completion: @escaping (Result<[Item], Error>) -> ()) {
+    func fetchData(completion: @escaping (Result<[Item], Error>) -> Void) {
         let session = URLSession.shared
         session.configuration.urlCache = nil
         session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        
+
         guard let url = URL(string: "https://raw.githubusercontent.com/leboncoin/paperclip/master/listing.json") else { return }
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30.0)
-        
-        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+
+        let task = session.dataTask(with: request, completionHandler: { data, _, error in
             if error != nil {
                 completion(.failure(NetworkError.errorReceived))
             } else if let data = data {

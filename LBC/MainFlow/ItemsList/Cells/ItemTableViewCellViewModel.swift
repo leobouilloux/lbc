@@ -11,7 +11,7 @@ import UIKit
 final class ItemTableViewCellViewModel {
     var image: UIImage
     var imageURL: URL?
-    
+
     let title: String
     let category: ItemCategory
     let price: String

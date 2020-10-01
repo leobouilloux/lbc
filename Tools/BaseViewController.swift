@@ -22,12 +22,12 @@ open class BaseViewController: UIViewController {
             }
         }
     }
-    
+
     @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -46,7 +46,6 @@ open class BaseViewController: UIViewController {
 }
 
 public extension BaseViewController {
-    /******************************************************/
     // MARK: - Loader
     func showLoader(completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {

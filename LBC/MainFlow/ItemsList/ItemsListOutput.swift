@@ -6,6 +6,8 @@
 //  Copyright © 2020 Leo Marcotte. All rights reserved.
 //
 
+import Foundation
+
 protocol ItemsListOutput {
     func showItemDetails(item: Item)
     func showCategoriesFilter(filters: [CategoryFilter])

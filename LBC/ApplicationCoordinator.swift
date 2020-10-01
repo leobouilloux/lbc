@@ -13,14 +13,13 @@ final class ApplicationCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     private let coordinatorFactory: CoordinatorFactory
     private let provider: Provider
-    
-    
+
     init(window: UIWindow, coordinatorFactory: CoordinatorFactory, provider: Provider) {
         self.coordinatorFactory = coordinatorFactory
         self.window = window
         self.provider = provider
     }
-    
+
     func start(with option: DeepLinkOption? = nil, presentationType: PresentationType = .root) {
         if let option = option, !childCoordinators.isEmpty {
             switch option {
@@ -30,8 +29,8 @@ final class ApplicationCoordinator: Coordinator {
             runSplashScreenFlow(presentationType: .root)
         }
     }
-    
-    private func runSplashScreenFlow(with option: DeepLinkOption? = nil, presentationType: PresentationType) {
+
+    private func runSplashScreenFlow(presentationType: PresentationType, option: DeepLinkOption? = nil) {
         let coordinator = coordinatorFactory.makeSplashScreenCoordinator(with: provider)
         coordinator.output = self
         addDependency(coordinator)
@@ -39,12 +38,12 @@ final class ApplicationCoordinator: Coordinator {
 
         window.rootViewController = coordinator.router.toPresent()
     }
-    
-    private func runMainFlow(with option: DeepLinkOption? = nil, presentationType: PresentationType) {
+
+    private func runMainFlow(presentationType: PresentationType, option: DeepLinkOption? = nil) {
         let coordinator = coordinatorFactory.makeMainCoordinator(with: provider)
         addDependency(coordinator)
         coordinator.start(with: option, presentationType: presentationType)
-        
+
         window.rootViewController = coordinator.router.toPresent()
     }
 }

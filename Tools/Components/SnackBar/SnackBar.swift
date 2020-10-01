@@ -36,7 +36,7 @@ public class SnackBar: UIView {
 
         setupImageView()
         setupMessageLabel()
-        
+
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.4
         layer.shadowOffset = .zero

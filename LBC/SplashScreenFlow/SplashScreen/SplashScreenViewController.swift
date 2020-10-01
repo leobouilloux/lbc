@@ -16,7 +16,7 @@ final class SplashScreenViewController: BaseViewController {
     private let avatarImageView: UIImageView
     private let avatarLabel: UILabel
     private let activityIndicatorView: UIActivityIndicatorView
-    
+
     init(with viewModel: SplashScreenViewModel) {
         self.viewModel = viewModel
         self.logoImageView = UIImageView()
@@ -30,22 +30,22 @@ final class SplashScreenViewController: BaseViewController {
         }
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.viewModel.output?.didFinishLoading()
         }
@@ -53,7 +53,6 @@ final class SplashScreenViewController: BaseViewController {
 }
 
 private extension SplashScreenViewController {
-    /******************************************/
     /* View */
     func setupView() {
         view.backgroundColor = UIColor(hex: "#F56B29")
@@ -62,13 +61,13 @@ private extension SplashScreenViewController {
         setupActivityIndicatorView()
         setupAvatarView()
     }
-    
+
     func setupLogoImageView() {
         logoImageView.image = Assets.logo
         logoImageView.tintColor = .white
         logoImageView.contentMode = .scaleAspectFit
         view.addSubview(logoImageView)
-        
+
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             NSLayoutConstraint(
@@ -82,25 +81,25 @@ private extension SplashScreenViewController {
             logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
-    
+
     func setupActivityIndicatorView() {
         activityIndicatorView.startAnimating()
         activityIndicatorView.color = .white
         view.addSubview(activityIndicatorView)
-        
+
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
-    
+
     func setupAvatarView() {
         view.addSubview(avatarView)
-        
+
         setupAvatarImageView()
         setupAvatarLabel()
-        
+
         avatarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             NSLayoutConstraint( // this is not possible using anchors for some reason
@@ -116,12 +115,12 @@ private extension SplashScreenViewController {
         ])
 
     }
-    
+
     func setupAvatarImageView() {
         avatarImageView.image = Assets.avatar
         avatarImageView.contentMode = .scaleAspectFit
         avatarView.addSubview(avatarImageView)
-        
+
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: avatarView.topAnchor),
@@ -130,24 +129,24 @@ private extension SplashScreenViewController {
             avatarImageView.widthAnchor.constraint(equalToConstant: 64),
             avatarImageView.heightAnchor.constraint(equalToConstant: 64)
         ])
-        
+
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = 32
     }
-    
+
     func setupAvatarLabel() {
         avatarLabel.font = .boldSystemFont(ofSize: 14)
         avatarLabel.textColor = .white
         avatarLabel.numberOfLines = 0
         avatarLabel.text = Loc.SplashScreen.avatarCaption
         avatarView.addSubview(avatarLabel)
-        
+
         avatarLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
             avatarLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
             avatarLabel.trailingAnchor.constraint(equalTo: avatarView.trailingAnchor)
         ])
-        
+
     }
 }

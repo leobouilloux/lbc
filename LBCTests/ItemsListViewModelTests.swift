@@ -6,8 +6,8 @@
 //  Copyright © 2020 Leo Marcotte. All rights reserved.
 //
 
-import XCTest
 @testable import LBC
+import XCTest
 
 class ItemsListViewModelTests: XCTestCase {
     func testFetchItemsSuccess() throws {
@@ -22,11 +22,11 @@ class ItemsListViewModelTests: XCTestCase {
             XCTAssertFalse(viewModel.items.isEmpty)
             itemsExpectation.fulfill()
         }
-        
+
         // THEN
         waitForExpectations(timeout: 10)
     }
-    
+
     func testFiltersSuccess() throws {
         // GIVEN
         let provider: Provider = MockProvider(config: .success)
@@ -38,20 +38,20 @@ class ItemsListViewModelTests: XCTestCase {
         // WHEN
         viewModel.filters = []
         viewModel.setupFilters()
-        
+
         // THEN
         XCTAssertTrue(mockedFilters == viewModel.filters)
     }
-    
+
     func testToggleCategorySuccess() throws {
         // GIVEN
         let provider: Provider = MockProvider(config: .success)
         let viewModel = ItemsListViewModel(provider: provider)
-        let mockedCategoryFilter: CategoryFilter = CategoryFilter(itemCategory: ItemCategory.childcareArticles)
+        let mockedCategoryFilter = CategoryFilter(itemCategory: ItemCategory.childcareArticles)
 
         // WHEN
         viewModel.toggleCategory(for: mockedCategoryFilter)
-        
+
         // THEN
         XCTAssertFalse(mockedCategoryFilter.isVisible)
     }

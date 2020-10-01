@@ -13,34 +13,33 @@ final class ItemTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
     private let categoryTag = GradientTag()
     private let priceLabel = UILabel()
-    
+
     var viewModel: ItemTableViewCellViewModel?
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         selectionStyle = .none
     }
-    
+
     func setup(with viewModel: ItemTableViewCellViewModel) {
         self.viewModel = viewModel
-        
+
         setupView(with: viewModel)
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         itemImageView.cancelImageLoad()
     }
 }
 
 private extension ItemTableViewCell {
-    /******************************************/
     /* View */
     func setupView(with viewModel: ItemTableViewCellViewModel) {
         setupItemImage(with: viewModel)
@@ -48,14 +47,14 @@ private extension ItemTableViewCell {
         setupCategoryLabel(with: viewModel)
         setupPriceLabel(with: viewModel)
     }
-    
+
     func setupItemImage(with viewModel: ItemTableViewCellViewModel) {
         if let url = viewModel.imageURL {
             itemImageView.loadImage(at: url)
         }
         itemImageView.backgroundColor = .lightGray
         addSubview(itemImageView)
-        
+
         itemImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             itemImageView.widthAnchor.constraint(equalToConstant: 72),
@@ -64,16 +63,16 @@ private extension ItemTableViewCell {
             itemImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             itemImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
-        
+
         itemImageView.layer.masksToBounds = true
         itemImageView.layer.cornerRadius = 2
     }
-    
+
     func setupTitleLabel(with viewModel: ItemTableViewCellViewModel) {
         titleLabel.text = viewModel.title
         titleLabel.font = .systemFont(ofSize: 16)
         addSubview(titleLabel)
-        
+
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
@@ -82,15 +81,15 @@ private extension ItemTableViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
     }
-    
+
     func setupCategoryLabel(with viewModel: ItemTableViewCellViewModel) {
         categoryTag.label.text = viewModel.category.name
         categoryTag.label.font = .boldSystemFont(ofSize: 12)
         categoryTag.label.textColor = .white
         categoryTag.gradientColors = viewModel.category.gradientColors
-        
+
         addSubview(categoryTag)
-        
+
         categoryTag.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             categoryTag.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
@@ -98,7 +97,7 @@ private extension ItemTableViewCell {
             categoryTag.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 16)
         ])
     }
-    
+
     func setupPriceLabel(with viewModel: ItemTableViewCellViewModel) {
         priceLabel.text = viewModel.price
         priceLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 16, weight: .bold)

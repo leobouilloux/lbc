@@ -10,41 +10,40 @@ import UIKit
 
 final class CategoryTableViewCell: UITableViewCell {
     private let categoryTag = GradientTag()
-    
+
     var viewModel: CategoryTableViewCellViewModel?
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         selectionStyle = .none
     }
-    
+
     func setup(with viewModel: CategoryTableViewCellViewModel) {
         self.viewModel = viewModel
-        
+
         setupView(with: viewModel)
     }
 }
 
 private extension CategoryTableViewCell {
-    /******************************************/
     /* View */
     func setupView(with viewModel: CategoryTableViewCellViewModel) {
         setupCategoryLabel(with: viewModel)
     }
-    
+
     func setupCategoryLabel(with viewModel: CategoryTableViewCellViewModel) {
         categoryTag.label.text = viewModel.title
         categoryTag.label.font = .boldSystemFont(ofSize: 24)
         categoryTag.label.textColor = .white
         categoryTag.gradientColors = viewModel.gradientColors
-        
+
         addSubview(categoryTag)
-        
+
         categoryTag.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             categoryTag.topAnchor.constraint(equalTo: topAnchor, constant: 8),
@@ -54,4 +53,3 @@ private extension CategoryTableViewCell {
         ])
     }
 }
-

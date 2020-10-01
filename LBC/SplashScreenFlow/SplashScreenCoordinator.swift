@@ -29,13 +29,12 @@ private extension SplashScreenCoordinator {
     func setupRoot(presentationType: PresentationType) {
         let viewModel = SplashScreenViewModel(with: provider)
         viewModel.output = self
-        
+
         let splashScreenPresentable = factory.makeSplashScreenPresentable(with: viewModel)
         router.navigate(to: splashScreenPresentable, with: presentationType)
     }
 }
 
-/******************************************/
 /* Output */
 extension SplashScreenCoordinator: SplashScreenOutput {
     func didFinishLoading() {

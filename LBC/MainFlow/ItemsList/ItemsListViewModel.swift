@@ -9,28 +9,28 @@
 final class ItemsListViewModel {
     let provider: Provider
     var items = [Item]()
-    var delegate: ItemsListViewModelDelegate?
+    weak var delegate: ItemsListViewModelDelegate?
     var output: ItemsListOutput?
-    
+
     var filters = [CategoryFilter]()
-    
+
     init(provider: Provider) {
         self.provider = provider
-        
+
         setupFilters()
     }
-    
+
     func setupFilters() {
         ItemCategory.allCases.forEach { itemCategory in
             filters.append(CategoryFilter(itemCategory: itemCategory))
         }
     }
-    
+
     func toggleCategory(for category: CategoryFilter) {
         category.isVisible.toggle()
         fetchItems()
     }
-    
+
     func fetchItems() {
         delegate?.dataIsLoading()
         provider.fetchData { [weak self] result in
@@ -46,10 +46,10 @@ final class ItemsListViewModel {
             }
         }
     }
-    
+
     func processItems(items: [Item]) {
         let filteredItems = items.filter { item -> Bool in
-            filters.first(where: { $0.itemCategory == item.category})?.isVisible ?? false
+            filters.first(where: { $0.itemCategory == item.category })?.isVisible ?? false
         }
         self.items = filteredItems
             .sorted(by: { $0.creationDate > $1.creationDate })
@@ -58,7 +58,7 @@ final class ItemsListViewModel {
     }
 }
 
-protocol ItemsListViewModelDelegate {
+protocol ItemsListViewModelDelegate: AnyObject {
     func dataIsLoading()
     func itemsLoaded()
     func errorOccured(error: NetworkError)

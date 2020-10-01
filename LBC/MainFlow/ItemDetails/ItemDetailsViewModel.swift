@@ -15,14 +15,14 @@ final class ItemDetailsViewModel {
     let category: ItemCategory
     let description: String
     let creationDate: String
-    
+
     init(with item: Item) {
         self.imageURL = item.imagesURL.thumb
         self.title = item.title
         self.price = String(format: "%.2f €", item.price)
         self.category = item.category
         self.description = item.description
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE d MMM yyyy HH:mm:ss"
         dateFormatter.locale = Locale.current

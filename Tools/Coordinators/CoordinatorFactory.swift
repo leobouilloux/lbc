@@ -6,7 +6,6 @@
 //  Copyright © 2020 Leo Marcotte. All rights reserved.
 //
 
-
 import UIKit
 
 public class CoordinatorFactory {

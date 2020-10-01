@@ -9,7 +9,7 @@
 class CategoryFilter {
     let itemCategory: ItemCategory
     var isVisible: Bool = true
-    
+
     init(itemCategory: ItemCategory) {
         self.itemCategory = itemCategory
     }

@@ -10,19 +10,19 @@ import UIKit
 
 final class CategoriesFilterViewController: BaseViewController {
     let viewModel: CategoriesFilterViewModel
-    
+
     private let tableView: UITableView
     private let confirmButton: UIButton
-    
+
     init(with viewModel: CategoriesFilterViewModel) {
         self.viewModel = viewModel
-        
+
         self.tableView = UITableView()
         self.confirmButton = UIButton()
-        
+
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,14 +31,13 @@ final class CategoriesFilterViewController: BaseViewController {
 }
 
 private extension CategoriesFilterViewController {
-    /******************************************/
     /* View */
     func setupView() {
         view.backgroundColor = Style.backgroundColor
         setupConfirmButton()
         setupTableView()
     }
-    
+
     func setupConfirmButton() {
         confirmButton.backgroundColor = .systemBlue
         confirmButton.tintColor = .white
@@ -46,7 +45,7 @@ private extension CategoriesFilterViewController {
         confirmButton.addTarget(self, action: #selector(confirmButtonPressed(sender:)), for: .touchUpInside)
         confirmButton.setTitle(Loc.CategoriesFilter.confirmButtonTitle, for: .normal)
         view.addSubview(confirmButton)
-        
+
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             confirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
@@ -54,18 +53,18 @@ private extension CategoriesFilterViewController {
             confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             confirmButton.heightAnchor.constraint(equalToConstant: 48)
         ])
-        
+
         confirmButton.layer.masksToBounds = true
         confirmButton.layer.cornerRadius = 4
     }
-    
+
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
         view.addSubview(tableView)
-        
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -74,8 +73,7 @@ private extension CategoriesFilterViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-    
-    /******************************************/
+
     /* Actions */
     @objc func confirmButtonPressed(sender: UIButton) {
         dismiss(animated: true, completion: { [weak self] in
@@ -108,11 +106,11 @@ extension CategoriesFilterViewController: UITableViewDataSource {
             return nil
         }
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return viewModel.filters.filter({ $0.isVisible }).count
@@ -122,9 +120,9 @@ extension CategoriesFilterViewController: UITableViewDataSource {
             return 0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let cell = CategoryTableViewCell()
 
         var filter: CategoryFilter?
@@ -133,7 +131,7 @@ extension CategoriesFilterViewController: UITableViewDataSource {
         } else if indexPath.section == 1 {
             filter = viewModel.filters.filter({ !$0.isVisible })[safeIndex: indexPath.row]
         }
-        
+
         guard let rowFilter = filter else { return UITableViewCell() }
 
         let cellViewModel = CategoryTableViewCellViewModel(filter: rowFilter)

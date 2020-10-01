@@ -15,11 +15,12 @@ enum MockProviderConfig {
 
 class MockProvider: Provider {
     private let config: MockProviderConfig
+
     init(config: MockProviderConfig) {
         self.config = config
     }
-    
-    func fetchData(completion: @escaping (Result<[Item], Error>) -> ()) {
+
+    func fetchData(completion: @escaping (Result<[Item], Error>) -> Void) {
         switch self.config {
         case let .generateError(ofType: error):
             completion(.failure(error))

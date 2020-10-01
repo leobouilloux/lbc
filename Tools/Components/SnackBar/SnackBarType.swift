@@ -31,7 +31,7 @@ public enum SnackBarType {
         return Style.SnackBar.labelColor
     }
 
-    public var image: UIImage { //TODO: Put real images here
+    public var image: UIImage {
         switch self {
         case .error:    return Assets.Icons.error
         case .warning:  return Assets.Icons.warning

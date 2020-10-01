@@ -14,17 +14,17 @@ enum Loc {
         static var jsonDecodeFailed = NSLocalizedString("error.jsonDecodeFailed", comment: "")
         static var errorReceived = NSLocalizedString("error.errorReceived", comment: "")
     }
-    
+
     enum CategoriesFilter {
         static var confirmButtonTitle = NSLocalizedString("categoriesFilter.confirmButtonTitle", comment: "")
         static var visibleCategoriesHeader = NSLocalizedString("categoriesFilter.visibleCategories", comment: "")
         static var hiddenCategoriesHeader = NSLocalizedString("categoriesFilter.hiddenCategories", comment: "")
     }
-    
+
     enum SplashScreen {
         static var avatarCaption = NSLocalizedString("splashScreen.avatarCaption", comment: "")
     }
-    
+
     enum ItemCategory {
         static var vehicles = NSLocalizedString("itemCategory.vehicles", comment: "")
         static var clothes = NSLocalizedString("itemCategory.clothes", comment: "")

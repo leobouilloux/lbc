@@ -11,7 +11,7 @@ import Foundation
 struct ItemImagesURL: Codable {
     var small: URL?
     var thumb: URL?
-    
+
     enum CodingKeys: String, CodingKey {
         case small
         case thumb

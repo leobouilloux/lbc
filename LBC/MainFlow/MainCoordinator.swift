@@ -27,34 +27,33 @@ private extension MainCoordinator {
     func setupRoot(presentationType: PresentationType) {
         let viewModel = ItemsListViewModel(provider: provider)
         viewModel.output = self
-        
+
         let presentable = factory.makeItemsListPresentable(with: viewModel)
         router.navigate(to: presentable, with: presentationType)
     }
-    
+
     func showItemDetails(item: Item, presentationType: PresentationType) {
         let viewModel = ItemDetailsViewModel(with: item)
 
         let presentable = factory.makeItemDetailsPresentable(with: viewModel)
         router.navigate(to: presentable, with: presentationType)
     }
-    
+
     func showCategoriesFilter(filters: [CategoryFilter], presentationType: PresentationType) {
         let viewModel = CategoriesFilterViewModel(filters: filters)
         viewModel.output = self
-        
+
         let presentable = factory.makeCategoriesFilterPresentable(with: viewModel)
         router.navigate(to: presentable, with: presentationType)
     }
 }
 
-/******************************************/
 /* Outputs */
 extension MainCoordinator: ItemsListOutput {
     func showItemDetails(item: Item) {
         showItemDetails(item: item, presentationType: .push)
     }
-    
+
     func showCategoriesFilter(filters: [CategoryFilter]) {
         showCategoriesFilter(filters: filters, presentationType: .present)
     }

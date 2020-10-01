@@ -12,7 +12,7 @@ enum NetworkError: Error {
     case jsonDecodeFailed
     case errorReceived
     case noDataReceived
-    
+
     var userFriendlyErrorMessage: String {
         switch self {
         case .jsonDecodeFailed: return Loc.Error.jsonDecodeFailed

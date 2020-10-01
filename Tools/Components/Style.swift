@@ -16,7 +16,7 @@ enum Style {
             return [UIColor.white.withAlphaComponent(0).cgColor, UIColor.white.cgColor]
         }
     }
-    
+
     static var backgroundColor: UIColor {
         if #available(iOS 13, *) {
             return .systemBackground
@@ -24,7 +24,7 @@ enum Style {
             return .white
         }
     }
-    
+
     static var tintColor: UIColor {
         if #available(iOS 13, *) {
             return .label
@@ -32,7 +32,7 @@ enum Style {
             return .black
         }
     }
-    
+
     static var textColor: UIColor {
         if #available(iOS 13, *) {
             return .label
@@ -40,7 +40,7 @@ enum Style {
             return .black
         }
     }
-    
+
     enum NavigationBar {
         static var tintColor: UIColor {
             if #available(iOS 13, *) {
@@ -57,13 +57,13 @@ enum Style {
             }
         }
     }
-    
+
     enum SnackBar {
         static var shadowColor: CGColor = UIColor.black.cgColor
         static var backgroundColor: UIColor = .white
         static var labelColor: UIColor = .black
     }
-    
+
     enum Loader {
         static var backgroundColor: UIColor {
             if #available(iOS 13, *) {

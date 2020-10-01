@@ -13,16 +13,16 @@ public class SnackBarController {
 
     var parentView: UIView?
     let snackBar = SnackBar()
-    
+
     func setup(in controller: UIViewController) {
         parentView = controller.view
 
         guard let parentView = self.parentView else { return }
 
         parentView.addSubview(snackBar)
-        
+
         snackBar.translatesAutoresizingMaskIntoConstraints = false
-        
+
         snackBarTopConstraint = snackBar.topAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.topAnchor)
         NSLayoutConstraint.activate([
             snackBarTopConstraint,
@@ -70,9 +70,9 @@ public class SnackBarController {
             self.snackBarTopConstraint.constant = -self.snackBar.frame.height
             UIView.animate(withDuration: 1, animations: {
                 self.parentView?.layoutIfNeeded()
-            }) { _ in
+            }, completion: { _ in
                 self.snackBar.isHidden = true
-            }
+            })
         }
     }
 }

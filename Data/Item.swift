@@ -17,7 +17,7 @@ struct Item: Codable {
     var imagesURL: ItemImagesURL
     var creationDate: Date
     var isUrgent: Bool
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case category = "category_id"
@@ -29,6 +29,3 @@ struct Item: Codable {
         case isUrgent = "is_urgent"
     }
 }
-
-
-

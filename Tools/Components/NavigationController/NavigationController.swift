@@ -92,7 +92,6 @@ public class NavigationController: UINavigationController {
 }
 
 private extension NavigationController {
-    /******************************************/
     /* View */
     func setupView() {
         setupNavigationBar()
@@ -102,40 +101,29 @@ private extension NavigationController {
         navigationItem.backBarButtonItem = nil
         navigationItem.leftBarButtonItem = closeButton
     }
-    
-    /******************************************/
+
     /* Actions */
     @objc func backButtonPressed(sender: UIBarButtonItem) {
         _ = self.popViewController(animated: true)
     }
-    
+
     @objc func closeButtonPressed(sender: UIBarButtonItem) {
-        
+
     }
 
-
-//    // *****************************************************************************
-//    // - MARK: Rx Bindings
-//    func setupRxBindings() {
-//        bindCloseButton()
-//        bindBackButton()
-//    }
-
-    /******************************************/
     /* Action */
     func backButtonAction() {
         if self.viewControllers.count > 1 {
             _ = self.popViewController(animated: true)
         }
     }
-    
+
     func closeButtonAction() {
-        
+
     }
 }
 
 public extension NavigationController {
-    /******************************************************/
     // MARK: - Loader
     func showLoader(completion: (() -> Void)? = nil) {
         self.loaderController.modalPresentationStyle = .overFullScreen

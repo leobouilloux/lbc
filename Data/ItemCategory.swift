@@ -21,7 +21,6 @@ enum ItemCategory: Int, Codable, CaseIterable {
     case pets = 10
     case childcareArticles = 11
 
-    
     var name: String {
         switch self {
         case .vehicles: return Loc.ItemCategory.vehicles
@@ -37,7 +36,7 @@ enum ItemCategory: Int, Codable, CaseIterable {
         case .childcareArticles: return Loc.ItemCategory.childcareArticles
         }
     }
-    
+
     var gradientColors: (UIColor, UIColor) {
         switch self {
         case .vehicles: return  (UIColor(hex: "#43C6AC"), UIColor(hex: "#191654"))

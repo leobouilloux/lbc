@@ -19,7 +19,6 @@ public final class LoaderController: UIViewController {
 }
 
 private extension LoaderController {
-    /******************************************************/
     // MARK: - View
     func setupView() {
         view.backgroundColor = UIColor.systemGray.withAlphaComponent(0.2)
@@ -35,7 +34,7 @@ private extension LoaderController {
             activityIndicator.style = .gray
         }
         activityIndicator.color = Style.Loader.tintColor
-        
+
         activityIndicator.layer.cornerRadius = 15
         activityIndicator.layer.masksToBounds = true
         view.addSubview(activityIndicator)
@@ -51,7 +50,6 @@ private extension LoaderController {
         ])
     }
 
-    /******************************************************/
     // MARK: - RxBindings
     func setupRxBindings() {
 

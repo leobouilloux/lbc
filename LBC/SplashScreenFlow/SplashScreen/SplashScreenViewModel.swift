@@ -8,6 +8,6 @@
 
 final class SplashScreenViewModel {
     var output: SplashScreenOutput?
-    
+
     init(with: Provider) {}
 }

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Provider {
-    func fetchData(completion: @escaping (Result<[Item], Error>) -> ())
+    func fetchData(completion: @escaping (Result<[Item], Error>) -> Void)
 }

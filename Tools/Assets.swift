@@ -11,6 +11,7 @@ import UIKit
 enum Assets {
     static var avatar = UIImage(named: "avatar") ?? UIImage()
     static var logo = UIImage(named: "leboncoin-logo") ?? UIImage()
+
     enum Icons {
         static var error = UIImage(named: "error") ?? UIImage()
         static var warning = UIImage(named: "warning") ?? UIImage()

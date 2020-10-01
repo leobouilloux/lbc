@@ -11,9 +11,9 @@ import UIKit
 enum Style {
     static var gradientViewColors: [CGColor] {
         if #available(iOS 13, *) {
-            return [UIColor.clear.cgColor, UIColor.systemBackground.cgColor]
+            return [UIColor.systemBackground.withAlphaComponent(0).cgColor, UIColor.systemBackground.cgColor]
         } else {
-            return [UIColor.clear.cgColor, UIColor.white.cgColor]
+            return [UIColor.white.withAlphaComponent(0).cgColor, UIColor.white.cgColor]
         }
     }
     
@@ -40,14 +40,13 @@ enum Style {
             return .black
         }
     }
-
     
     enum NavigationBar {
         static var tintColor: UIColor {
             if #available(iOS 13, *) {
                 return .secondaryLabel
             } else {
-                return .black
+                return .gray
             }
         }
         static var barTintColor: UIColor {
@@ -60,12 +59,26 @@ enum Style {
     }
     
     enum SnackBar {
+        static var shadowColor: CGColor = UIColor.black.cgColor
         static var backgroundColor: UIColor = .white
         static var labelColor: UIColor = .black
     }
     
     enum Loader {
-        static var backgroundColor: UIColor = .white
-        static var tintColor: UIColor = .white
+        static var backgroundColor: UIColor {
+            if #available(iOS 13, *) {
+                return .systemBackground
+            } else {
+                return .white
+            }
+        }
+
+        static var tintColor: UIColor {
+            if #available(iOS 13, *) {
+                return .secondaryLabel
+            } else {
+                return .gray
+            }
+        }
     }
 }

@@ -40,7 +40,7 @@ class UIImageLoader {
                             duration: 0.3,
                             options: .transitionCrossDissolve,
                             animations: {
-                                imageView.image = UIImage(named: "camera-off")
+                                imageView.image = Assets.Icons.cameraOff
                                 imageView.tintColor = .white
                                 imageView.contentMode = .center
                         }, completion: nil)

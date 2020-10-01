@@ -36,6 +36,11 @@ public class SnackBar: UIView {
 
         setupImageView()
         setupMessageLabel()
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.4
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 4
     }
 
     func updateView(with type: SnackBarType) {

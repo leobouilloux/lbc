@@ -6,6 +6,12 @@
   Copyright © 2020 Leo Marcotte. All rights reserved.
 */
 
+// Errors
+"error.noDataReceived" = "No data has been received from the remote server";
+"error.jsonDecodeFailed" = "The data received seems to be badly formatted";
+"error.errorReceived" = "Unexpected network error";
+
+
 // CategoriesFilter
 "categoriesFilter.confirmButtonTitle" = "Apply new filters";
 "categoriesFilter.visibleCategories" = "Visible categories";

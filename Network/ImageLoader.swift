@@ -35,8 +35,6 @@ class ImageLoader {
             
             guard let error = error else {
                 completion(.failure(ImageLoaderError.noImage))
-                // without an image or an error, we'll just ignore this for now
-                // you could add your own special error cases for this scenario
                 return
             }
             

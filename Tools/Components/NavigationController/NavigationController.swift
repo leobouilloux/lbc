@@ -10,7 +10,7 @@ import UIKit
 
 public class NavigationController: UINavigationController {
     private let backButton = UIBarButtonItem(
-        image: UIImage(named: "chevron-left"),
+        image: Assets.Icons.chevronLeft,
         style: .plain,
         target: nil,
         action: #selector(backButtonPressed(sender:))

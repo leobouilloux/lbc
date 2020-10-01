@@ -9,6 +9,12 @@
 import Foundation
 
 enum Loc {
+    enum Error {
+        static var noDataReceived = NSLocalizedString("error.noDataReceived", comment: "")
+        static var jsonDecodeFailed = NSLocalizedString("error.jsonDecodeFailed", comment: "")
+        static var errorReceived = NSLocalizedString("error.errorReceived", comment: "")
+    }
+    
     enum CategoriesFilter {
         static var confirmButtonTitle = NSLocalizedString("categoriesFilter.confirmButtonTitle", comment: "")
         static var visibleCategoriesHeader = NSLocalizedString("categoriesFilter.visibleCategories", comment: "")

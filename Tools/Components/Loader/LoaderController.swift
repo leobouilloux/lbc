@@ -29,9 +29,13 @@ private extension LoaderController {
 
     func setupActivityIndicatorView() {
         activityIndicator.backgroundColor = Style.Loader.backgroundColor
-        activityIndicator.style = .gray
-        //activityIndicator.style = .large
-//        activityIndicator.color = .label
+        if #available(iOS 13, *) {
+            activityIndicator.style = .medium
+        } else {
+            activityIndicator.style = .gray
+        }
+        activityIndicator.color = Style.Loader.tintColor
+        
         activityIndicator.layer.cornerRadius = 15
         activityIndicator.layer.masksToBounds = true
         view.addSubview(activityIndicator)

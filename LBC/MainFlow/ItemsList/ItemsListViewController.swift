@@ -32,8 +32,25 @@ final class ItemsListViewController: BaseViewController {
         setupNavigationBar()
         setupView()
         
-        self.showLoader { [weak self] in
-            self?.viewModel.fetchItems()
+        viewModel.fetchItems()
+    }
+    
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 13.0, *) { // Detect dark mode change to reapply the correct gradient
+            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                gradientView.layer.sublayers?.removeAll()
+
+                let gradientLayer = CAGradientLayer()
+                gradientLayer.colors = Style.gradientViewColors
+                gradientLayer.locations =  [0.0, 1.0]
+                gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+                gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+                gradientLayer.frame.size = CGSize(width: view.bounds.width, height: 200)
+                gradientView.layer.insertSublayer(gradientLayer, at: 0)
+            }
         }
     }
 }
@@ -55,7 +72,7 @@ private extension ItemsListViewController {
     
     func setupFilterBarButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "filter"),
+            image: Assets.Icons.filter,
             style: .plain,
             target: self,
             action: #selector(filterBarButtonPressed(sender:))
@@ -90,7 +107,7 @@ private extension ItemsListViewController {
     
     func setupRefreshControl() {
         refreshControl.addTarget(self, action: #selector(refreshTableView(sender:)), for: .valueChanged)
-        tableView.addSubview(refreshControl)
+        tableView.refreshControl = refreshControl
     }
     
     func setupGradientView() {
@@ -121,10 +138,7 @@ private extension ItemsListViewController {
     }
     
     @objc func refreshTableView(sender: UIRefreshControl) {
-        refreshControl.endRefreshing()
-        self.showLoader { [weak self] in
-            self?.viewModel.fetchItems()
-        }
+        viewModel.fetchItems()
     }
 }
 
@@ -132,7 +146,7 @@ extension ItemsListViewController: UITableViewDelegate {
     /******************************************/
     /* UITableViewDelegate */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = viewModel.items[indexPath.row]
+        guard let item = viewModel.items[safeIndex: indexPath.row] else { return }
         viewModel.output?.showItemDetails(item: item)
     }
 }
@@ -152,10 +166,15 @@ extension ItemsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ItemTableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: UUID().uuidString)
-        let cellViewModel = ItemTableViewCellViewModel(item: viewModel.items[indexPath.row])
-        cell.setup(with: cellViewModel)
-        return cell
+        if let item = viewModel.items[safeIndex: indexPath.row] {
+            let cell = ItemTableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: UUID().uuidString)
+            let cellViewModel = ItemTableViewCellViewModel(item: item)
+            
+            cell.setup(with: cellViewModel)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -164,6 +183,14 @@ extension ItemsListViewController: UITableViewDataSource {
 }
 
 extension ItemsListViewController: ItemsListViewModelDelegate {
+    func dataIsLoading() {
+        showLoader { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
     func itemsLoaded() {
         self.hideLoader { [weak self] in
             DispatchQueue.main.async {
@@ -172,9 +199,11 @@ extension ItemsListViewController: ItemsListViewModelDelegate {
         }
     }
     
-    func errorOccured() {
+    func errorOccured(error: NetworkError) {
         self.hideLoader { [weak self] in
-            self?.snackBarController.error(message: "Couldn't load data")
+            DispatchQueue.main.async {
+                self?.snackBarController.error(message: error.userFriendlyErrorMessage)
+            }
         }
     }
 }

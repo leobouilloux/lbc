@@ -94,7 +94,7 @@ private extension ItemDetailsViewController {
     func setupItemImageView() {
         itemImageView.backgroundColor = .lightGray
         itemImageView.clipsToBounds = true
-        itemImageView.image = UIImage(named: "camera-off")
+        itemImageView.image = Assets.Icons.cameraOff
         itemImageView.tintColor = .white
         itemImageView.contentMode = .center
         itemView.addSubview(itemImageView)
@@ -173,6 +173,8 @@ private extension ItemDetailsViewController {
     
     func setupItemCreationDateLabel() {
         itemCreationDateLabel.text = viewModel.creationDate
+        itemCreationDateLabel.font = .italicSystemFont(ofSize: 14)
+        itemCreationDateLabel.textColor = .systemGray
         itemView.addSubview(itemCreationDateLabel)
         
         itemCreationDateLabel.translatesAutoresizingMaskIntoConstraints = false

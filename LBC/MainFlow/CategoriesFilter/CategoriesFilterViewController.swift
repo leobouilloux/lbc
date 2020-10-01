@@ -88,10 +88,10 @@ private extension CategoriesFilterViewController {
 extension CategoriesFilterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let categoryFilter = viewModel.filters.filter({ $0.isVisible })[indexPath.row]
+            guard let categoryFilter = viewModel.filters.filter({ $0.isVisible })[safeIndex: indexPath.row] else { return }
             viewModel.toggleCategory(for: categoryFilter)
         } else if indexPath.section == 1 {
-            let categoryFilter = viewModel.filters.filter({ !$0.isVisible })[indexPath.row]
+            guard let categoryFilter = viewModel.filters.filter({ !$0.isVisible })[safeIndex: indexPath.row] else { return }
             viewModel.toggleCategory(for: categoryFilter)
         }
         self.tableView.reloadData()
@@ -124,13 +124,14 @@ extension CategoriesFilterViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = CategoryTableViewCell()
 
         var filter: CategoryFilter?
         if indexPath.section == 0 {
-            filter = viewModel.filters.filter({ $0.isVisible })[indexPath.row]
+            filter = viewModel.filters.filter({ $0.isVisible })[safeIndex: indexPath.row]
         } else if indexPath.section == 1 {
-            filter = viewModel.filters.filter({ !$0.isVisible })[indexPath.row]
+            filter = viewModel.filters.filter({ !$0.isVisible })[safeIndex: indexPath.row]
         }
         
         guard let rowFilter = filter else { return UITableViewCell() }

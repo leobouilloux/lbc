@@ -9,6 +9,5 @@
 import Foundation
 
 protocol Provider {
-    func fetchData(completion: @escaping (Result<[Item], NetworkError>) -> ())
-//    var dataProvider: RealmProvider { get }
+    func fetchData(completion: @escaping (Result<[Item], Error>) -> ())
 }

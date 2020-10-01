@@ -17,16 +17,13 @@ public class SnackBarController {
     func setup(in controller: UIViewController) {
         parentView = controller.view
 
-        controller.view.addSubview(snackBar)
-        snackBar.translatesAutoresizingMaskIntoConstraints = false
-
         guard let parentView = self.parentView else { return }
+
+        parentView.addSubview(snackBar)
         
-        if #available(iOS 11, *) {
-            snackBarTopConstraint = snackBar.topAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.topAnchor)
-        } else {
-            snackBarTopConstraint = snackBar.topAnchor.constraint(equalTo: controller.topLayoutGuide.bottomAnchor)
-        }
+        snackBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        snackBarTopConstraint = snackBar.topAnchor.constraint(equalTo: parentView.safeAreaLayoutGuide.topAnchor)
         NSLayoutConstraint.activate([
             snackBarTopConstraint,
             snackBar.leftAnchor.constraint(equalTo: parentView.leftAnchor, constant: 16),
@@ -63,7 +60,8 @@ public class SnackBarController {
 
     private func animate() {
         snackBar.isHidden = false
-        self.snackBarTopConstraint.constant = 0
+        parentView?.bringSubviewToFront(snackBar)
+        self.snackBarTopConstraint.constant = 16
 
         UIView.animate(withDuration: 1, animations: {
             self.parentView?.layoutIfNeeded()

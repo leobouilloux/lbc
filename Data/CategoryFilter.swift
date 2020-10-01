@@ -14,3 +14,11 @@ class CategoryFilter {
         self.itemCategory = itemCategory
     }
 }
+
+extension CategoryFilter: Equatable {
+    static func == (lhs: CategoryFilter, rhs: CategoryFilter) -> Bool {
+        return
+            lhs.isVisible == rhs.isVisible
+                && lhs.itemCategory == rhs.itemCategory
+    }
+}

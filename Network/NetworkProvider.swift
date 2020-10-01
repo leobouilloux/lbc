@@ -8,25 +8,19 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case jsonDecodeFailed
-    case errorReceived
-    case noDataReceived
-}
-
 class NetworkProvider: Provider {
-    func fetchData(completion: @escaping (Result<[Item], NetworkError>) -> ()) {
+    func fetchData(completion: @escaping (Result<[Item], Error>) -> ()) {
         let session = URLSession.shared
-        guard let url = URL(string: "https://raw.githubusercontent.com/leboncoin/paperclip/master/listing.json") else { return }
+        session.configuration.urlCache = nil
+        session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         
-        let task = session.dataTask(with: url, completionHandler: { data, response, error in
-            // Check the response
-            if let error = error {
-                completion(.failure(.errorReceived))
-                print(error)
-                return
+        guard let url = URL(string: "https://raw.githubusercontent.com/leboncoin/paperclip/master/listing.json") else { return }
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30.0)
+        
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            if error != nil {
+                completion(.failure(NetworkError.errorReceived))
             } else if let data = data {
-                // Serialize the data into an object
                 do {
                     let decoder = JSONDecoder()
                     let dateFormatter = DateFormatter()
@@ -35,11 +29,11 @@ class NetworkProvider: Provider {
                     let items = try decoder.decode([Item].self, from: data)
                     completion(.success(items))
                 } catch {
-                    completion(.failure(.jsonDecodeFailed))
+                    completion(.failure(NetworkError.jsonDecodeFailed))
                     print("Error during JSON serialization: \(error.localizedDescription)")
                 }
             } else {
-                    completion(.failure(.noDataReceived))
+                    completion(.failure(NetworkError.noDataReceived))
             }
         })
         task.resume()

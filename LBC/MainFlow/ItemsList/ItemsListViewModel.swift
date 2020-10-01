@@ -32,6 +32,7 @@ final class ItemsListViewModel {
     }
     
     func fetchItems() {
+        delegate?.dataIsLoading()
         provider.fetchData { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -39,7 +40,9 @@ final class ItemsListViewModel {
                 self.processItems(items: items)
             case let .failure(error):
                 print(error.localizedDescription)
-                self.delegate?.errorOccured()
+                if let error = error as? NetworkError {
+                    self.delegate?.errorOccured(error: error)
+                }
             }
         }
     }
@@ -56,6 +59,7 @@ final class ItemsListViewModel {
 }
 
 protocol ItemsListViewModelDelegate {
+    func dataIsLoading()
     func itemsLoaded()
-    func errorOccured()
+    func errorOccured(error: NetworkError)
 }

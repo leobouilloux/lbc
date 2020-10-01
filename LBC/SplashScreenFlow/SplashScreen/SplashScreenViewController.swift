@@ -23,7 +23,11 @@ final class SplashScreenViewController: BaseViewController {
         self.avatarView = UIView()
         self.avatarImageView = UIImageView()
         self.avatarLabel = UILabel()
-        self.activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        if #available(iOS 13.0, *) {
+            self.activityIndicatorView = UIActivityIndicatorView(style: .medium)
+        } else {
+            self.activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        }
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,7 +64,7 @@ private extension SplashScreenViewController {
     }
     
     func setupLogoImageView() {
-        logoImageView.image = UIImage(named: "leboncoin-logo")
+        logoImageView.image = Assets.logo
         logoImageView.tintColor = .white
         logoImageView.contentMode = .scaleAspectFit
         view.addSubview(logoImageView)
@@ -81,6 +85,7 @@ private extension SplashScreenViewController {
     
     func setupActivityIndicatorView() {
         activityIndicatorView.startAnimating()
+        activityIndicatorView.color = .white
         view.addSubview(activityIndicatorView)
         
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -104,15 +109,16 @@ private extension SplashScreenViewController {
                 toItem: view, attribute: .centerY,
                 multiplier: 1.5, constant: 0
             ),
-            avatarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            avatarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            avatarView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            avatarView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 16),
+            avatarView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -16),
             avatarView.heightAnchor.constraint(equalToConstant: 64)
         ])
 
     }
     
     func setupAvatarImageView() {
-        avatarImageView.image = UIImage(named: "avatar")
+        avatarImageView.image = Assets.avatar
         avatarImageView.contentMode = .scaleAspectFit
         avatarView.addSubview(avatarImageView)
         

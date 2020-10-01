@@ -6,6 +6,12 @@
   Copyright © 2020 Leo Marcotte. All rights reserved.
 */
 
+// Errors
+"error.noDataReceived" = "Aucune donnée n'est renvoyée par le serveur distant";
+"error.jsonDecodeFailed" = "Les données reçue ne sont pas correctement formatées";
+"error.errorReceived" = "Erreur réseau";
+
+
 // CategoriesFilter
 "categoriesFilter.confirmButtonTitle" = "Appliquer les nouveaux filtres";
 "categoriesFilter.visibleCategories" = "Catégories visibles";
